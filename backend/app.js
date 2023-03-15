@@ -6,6 +6,8 @@ const userRoutes = require("./routes/user");
 
 const app = express();   
 
+app.use(express.json()); //Pour exposer le body des requêtes
+
 //database
 mongoose.connect('mongodb+srv://JeanAtsu:Oss117_01234@jeanatsu.ccc0yk8.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -22,7 +24,6 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use(express.json()); //Pour exposer le body des requêtes
 app.use('/api/sauce', sauceRoutes);
 app.use('/api/auth', userRoutes);
 
